@@ -28,10 +28,20 @@ $a = array(
 
 echo "<pre>";print_r($a);
 $i = 1;
+$x = array('TKW','TIU','TKP');
 while($i<=3){
     $b = array_column($a, $i);
-    rsort($b);
-    print_r($b);
+    $j = 0;
+    $r = array();
+    // print_r($b);
+    while($j<count($a)){
+        $r[$a[$j][0]] = $b[$j];
+        $j++;
+    }
+    // print_r($r);
+    arsort($r);
+    echo "<h3>".$x[$i-1]."</h3>";
+    print_r($r);
     $i++;
 }
 ?>
