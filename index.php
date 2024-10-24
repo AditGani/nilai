@@ -1,30 +1,5 @@
 <?php
-$a = array(
-    0 => array(
-        0 => 'Sitti Nurmaipa deapati idris',
-        1 => 95,
-        2 => 135,
-        3 => 188,
-    ),
-    1 => array(
-        0 => 'maharani rahmah putri syafii',
-        1 => 85,
-        2 => 130,
-        3 => 191,
-    ),
-    2 => array(
-        0 => 'mohamad ferdiansyah palilati',
-        1 => 75,
-        2 => 135,
-        3 => 191,
-    ),
-    3 => array(
-        0 => 'meldi rumbay',
-        1 => 135,
-        2 => 188,
-        3 => 188,
-    ),
-);
+require "array.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,45 +8,78 @@ $a = array(
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Monitoringsasi SPM 2024</title>
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/font-awesome\css\font-awesome.min.css">
 </head>
 <body>
-<?php
-echo "<pre>";print_r($a);
-$i = 1;
-$x = array('TKW','TIU','TKP');
-while($i<=3){
-    $b = array_column($a, $i);
-    $j = 0;
-    $r = array();
-    // print_r($b);
-    while($j<count($a)){
-        $r[$a[$j][0]] = $b[$j];
-        $j++;
-    }
-    // print_r($r);
-    arsort($r);
-    echo "<h3>".$x[$i-1]."</h3>";
-    print_r($r);
-    $i++;
-}
-?>
 <div class="container">
     <div class="row">
-        <div class="col-lg-8">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Nama</th>
-                        <th>Nilai</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>18</td>
-                        <td>18</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="col-lg-10 mt-5">
+            <div class="row">
+                <?php
+                $i = 0;
+                $x = array('TKW','TIU','TKP');
+                while($i<3){
+                ?>
+                <div class="col-lg-4">
+                    <h4 class="text-center"><?= $x[$i];?></h4>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Nilai</th>
+                            </tr>
+                        </thead>
+                        <?php
+                        $b = array_column($a, $i+1);
+                        $j = 0;
+                        $r = array();
+                        while($j<count($a)){
+                            $r[$a[$j][0]] = $b[$j];
+                            $j++;
+                        }
+                        arsort($r);
+                        ?>
+                        <tbody>
+                        <?php
+                        $o = 1;
+                        foreach($r as $key => $value){
+                            $j = 0;
+                            $color = '';
+                            while($j<count($a)){
+                                if($a[$j][0]==$key){
+                                    // $color = $a[$j][4];
+                                    $color = $a[$j][4];
+                                }
+                                $j++;
+                            }
+                            if($i+1==1 && $value >= 65){
+                                $value = "<b>".$value."</b>";
+                            } else {
+                                if($i+1==2 && $value >= 80){
+                                    $value = "<b>".$value."</b>";
+                                } else {
+                                    if($i+1==3 && $value >= 166){
+                                        $value = "<b>".$value."</b>";
+                                    } else {
+                                        $value;
+                                    }
+                                }
+                            }
+                            ?>
+                            <tr>
+                                <td class="text-center"><i class="<?= $color;?>"></i></td>
+                                <td class="text-capitalize"><?= $key;?></td>
+                                <td><?= $value;?></td>
+                            </tr>
+                            <?php
+                        } ?>
+                        </tbody>
+                    </table>
+                </div>
+                <?php
+                $i++; } ?>
+            </div>
         </div>
     </div>
 </div>
