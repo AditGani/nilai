@@ -68,7 +68,7 @@ require "array.php";
                             }
                             ?>
                             <tr>
-                                <td class="text-center"><i class="<?= $color;?>"></i></td>
+                                <td class="text-center"><!-- <i class="<?= $color;?>"></i> --></td>
                                 <td class="text-capitalize"><?= $key;?></td>
                                 <td><?= $value;?></td>
                             </tr>
