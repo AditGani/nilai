@@ -25,7 +25,17 @@ $a = array(
         3 => 188,
     ),
 );
-
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Monitoringsasi SPM 2024</title>
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+</head>
+<body>
+<?php
 echo "<pre>";print_r($a);
 $i = 1;
 $x = array('TKW','TIU','TKP');
@@ -45,3 +55,26 @@ while($i<=3){
     $i++;
 }
 ?>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Nilai</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>18</td>
+                        <td>18</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
